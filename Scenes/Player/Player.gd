@@ -3,6 +3,7 @@ extends KinematicBody2D
 const SPEED = 200
 
 var velocity = Vector2.ZERO
+onready var BULLET_SCENE = preload("res://Scenes/Bullet.tscn")
 
 func _physics_process(delta):
 	var input_vector = Vector2.ZERO
@@ -16,3 +17,13 @@ func _physics_process(delta):
 		velocity = Vector2.ZERO
 
 	move_and_slide(velocity) # Moves body along input vector. Slides against other objects instead of stopping dead. Accounts for delta automatically.
+
+func _process(delta):
+	if Input.is_action_just_pressed("ui_mouse_left"):
+		fire()
+
+func fire():
+	var bullet = BULLET_SCENE.instance()
+	bullet.position = get_global_position()
+	get_parent().add_child(bullet)
+	
