@@ -34,5 +34,5 @@ func grid_to_world_centered(pos: Vector2):
 	return grid_to_world(pos + Vector2.ONE*0.5)
 
 func _process(delta):
-	print(grid)
+	#print(grid)
 	pass
