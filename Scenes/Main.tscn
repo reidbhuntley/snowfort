@@ -3,7 +3,7 @@
 [ext_resource path="res://Scenes/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Wall/Wall.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Grid/Grid.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scenes/Bullet.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/EnemySpawner.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Mobs/RunningEnemy.tscn" type="PackedScene" id=5]
 
 [node name="Game" type="Node"]
@@ -16,12 +16,10 @@ position = Vector2( 74.1202, 156.885 )
 collision_mask = 2147483651
 
 [node name="Wall" parent="Grid" instance=ExtResource( 2 )]
-position = Vector2( 72.2357, 40.939 )
+position = Vector2( 49.9467, 51.202 )
 collision_layer = 2147483650
 
-[node name="Bullet" parent="Grid" instance=ExtResource( 4 )]
-
 [node name="RunningEnemy" parent="Grid" instance=ExtResource( 5 )]
-position = Vector2( 185.406, 28.6055 )
-collision_layer = 4
-collision_mask = 2
+position = Vector2( 868.776, 86.2499 )
+
+[node name="EnemySpawner" parent="." instance=ExtResource( 4 )]
