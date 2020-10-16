@@ -1,6 +1,5 @@
 extends Node
 
-
 onready var grid = get_parent().get_node("Grid")
 onready var LASTCOL = grid.grid_bounds.y
 
