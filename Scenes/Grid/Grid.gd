@@ -7,6 +7,9 @@ const CELL_WIDTH = 64.0
 const CELL_HEIGHT = 64.0
 const CELL_SIZE = Vector2(CELL_WIDTH, CELL_HEIGHT)
 
+var grid_size = Vector2(16,16)
+
+
 export var grid_bounds = Vector2.ONE
 
 var grid = []
