@@ -1,13 +1,16 @@
-extends RigidBody2D
+extends KinematicBody2D
 
 var speed  = 100
-var direction = Vector2(-1,0)
+var velocity = Vector2()
 
 func _ready():
 	pass
 	
 func _physics_process(delta):
-	set_linear_velocity(direction * speed)
+	
+	velocity.x = speed * -1
+	var motion = velocity * delta
+	move_and_collide(motion)
 	
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
