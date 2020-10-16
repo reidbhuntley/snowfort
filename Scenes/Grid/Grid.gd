@@ -21,11 +21,21 @@ func _ready():
 			col.append(null)
 		grid.append(col)
 
+func cell_in_bounds(pos: Vector2):
+	return pos.x < grid_bounds.x and pos.y < grid_bounds.y
+
 func get_cell(pos: Vector2):
-	return grid[pos.x][pos.y]
+	if cell_in_bounds(pos):
+		return grid[pos.x][pos.y]
+	else:
+		return null
 
 func set_cell(pos: Vector2, value):
-	grid[pos.x][pos.y] = value
+	if cell_in_bounds(pos):
+		grid[pos.x][pos.y] = value
+	else:
+		pass
+		#print("oof")
 
 func world_to_grid(pos: Vector2):
 	return (global_transform.xform_inv(pos) / CELL_SIZE).floor()
