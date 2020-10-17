@@ -13,9 +13,15 @@ _global_script_classes=[ {
 "class": "Grid",
 "language": "GDScript",
 "path": "res://Scenes/Grid/Grid.gd"
+}, {
+"base": "Node",
+"class": "NodeHeight",
+"language": "GDScript",
+"path": "res://Scenes/NodeHeight/NodeHeight.gd"
 } ]
 _global_script_class_icons={
-"Grid": ""
+"Grid": "",
+"NodeHeight": ""
 }
 
 [application]
