@@ -12,7 +12,8 @@ func _ready():
 func _physics_process(delta):
 	velocity += grav*delta
 	node_height.global_coords += velocity*delta
+	if node_height.height_coord < 0.0:
+		queue_free()
 
 func _on_VisibilityNotifier2D_screen_exited():
 	queue_free()
-
