@@ -7,15 +7,12 @@
 radius = 2.00246
 height = 10.7674
 
-[node name="RunningEnemy" type="RigidBody2D" groups=[
+[node name="RunningEnemy" type="KinematicBody2D" groups=[
 "mobs",
 ]]
 collision_layer = 4
 collision_mask = 2
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="PlaceholderSprite" type="Sprite" parent="."]
 position = Vector2( 0, -30 )
