@@ -15,12 +15,11 @@ func _process(delta):
 	var to_sort = []
 	for child in get_children():
 		if child is Node2D:
-			var depth: float
-			var node_height = child.get_node("NodeHeight")
-			if node_height is NodeHeight:
-				depth = node_height.depth_coord
-			else:
-				depth = child.global_position.y
+			var depth = child.global_position.y
+			if child.has_node("NodeHeight"):
+				var node_height = child.get_node("NodeHeight")
+				if node_height is NodeHeight:
+					depth = node_height.depth_coord
 			to_sort.append(ChildDepth.new(child, depth))
 	
 	to_sort.sort_custom(ChildDepth, "sort")
