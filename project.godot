@@ -9,7 +9,7 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "YSort",
+"base": "YZSort",
 "class": "Grid",
 "language": "GDScript",
 "path": "res://Scenes/Grid/Grid.gd"
@@ -23,11 +23,17 @@ _global_script_classes=[ {
 "class": "NodeHeight",
 "language": "GDScript",
 "path": "res://Scenes/NodeHeight/NodeHeight.gd"
+}, {
+"base": "Node2D",
+"class": "YZSort",
+"language": "GDScript",
+"path": "res://Scenes/YZSort/YZSort.gd"
 } ]
 _global_script_class_icons={
 "Grid": "",
 "Hitbox": "",
-"NodeHeight": ""
+"NodeHeight": "",
+"YZSort": ""
 }
 
 [application]
