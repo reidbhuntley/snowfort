@@ -1,24 +1,19 @@
 extends Area2D
 
-var speed = 10
-var movement = Vector2()
-onready var mouse_pos = null
+var initial_speed := 500.0
+var velocity: Vector2
+var grav := Vector2(0.0, 400.0)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	mouse_pos = get_local_mouse_position()
-
+	velocity = get_local_mouse_position().normalized()*initial_speed
 
 func _physics_process(delta):
-	movement = movement.move_toward(mouse_pos, delta)
-	movement = movement.normalized() * speed
-	position = position + movement
-
-
+	velocity += grav*delta
+	position += velocity*delta
 
 func _on_VisibilityNotifier2D_screen_exited():
 	queue_free()
-
 
 func _on_Bullet_body_entered(body):
 	if body.is_in_group("mobs"):
