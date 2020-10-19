@@ -1,18 +1,23 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scenes/Mobs/image0.jpg" type="Texture" id=1]
 [ext_resource path="res://Scenes/Mobs/RunningEnemy.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/Hitbox/Hitbox.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/NodeHeight/NodeHeight.tscn" type="PackedScene" id=4]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 2.00246
 height = 10.7674
 
-[node name="RunningEnemy" type="KinematicBody2D" groups=[
-"mobs",
-]]
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 16, 32 )
+
+[node name="RunningEnemy" type="KinematicBody2D"]
 collision_layer = 4
-collision_mask = 2
 script = ExtResource( 2 )
+
+[node name="NodeHeight" parent="." instance=ExtResource( 4 )]
+thickness = 48.0
 
 [node name="PlaceholderSprite" type="Sprite" parent="."]
 position = Vector2( 0, -30 )
@@ -24,3 +29,12 @@ position = Vector2( 0, -2 )
 rotation = 1.5708
 scale = Vector2( 1.8, 1.8 )
 shape = SubResource( 1 )
+
+[node name="Hitbox" parent="." instance=ExtResource( 3 )]
+collision_mask = 8
+node_height_path = NodePath("../NodeHeight")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2( 0, -30 )
+shape = SubResource( 2 )
+[connection signal="hitbox_entered" from="Hitbox" to="." method="_on_Hitbox_hitbox_entered"]

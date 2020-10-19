@@ -9,15 +9,19 @@
 [node name="Game" type="Node"]
 
 [node name="Grid" parent="." instance=ExtResource( 3 )]
-grid_bounds = Vector2( 3, 3 )
+grid_bounds = Vector2( 16, 8 )
 
 [node name="Player" parent="Grid" instance=ExtResource( 1 )]
 position = Vector2( 74.1202, 156.885 )
-collision_mask = 2147483651
+collision_mask = 2147483649
 
 [node name="Wall" parent="Grid" instance=ExtResource( 2 )]
-position = Vector2( 49.9467, 51.202 )
-collision_layer = 2147483650
+position = Vector2( 76.4171, 111.706 )
+collision_layer = 2147483649
+
+[node name="Wall2" parent="Grid" instance=ExtResource( 2 )]
+position = Vector2( 161.5, 259.814 )
+collision_layer = 2147483649
 
 [node name="RunningEnemy" parent="Grid" instance=ExtResource( 5 )]
 position = Vector2( 868.776, 86.2499 )
