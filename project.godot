@@ -17,7 +17,7 @@ _global_script_classes=[ {
 "base": "Area2D",
 "class": "Hitbox",
 "language": "GDScript",
-"path": "res://Scenes/Hitbox/Hitbox.gd"
+"path": "res://Scenes/NodeHeight/Hitbox/Hitbox.gd"
 }, {
 "base": "Node",
 "class": "NodeHeight",
@@ -27,7 +27,7 @@ _global_script_classes=[ {
 "base": "Node2D",
 "class": "YZSort",
 "language": "GDScript",
-"path": "res://Scenes/YZSort/YZSort.gd"
+"path": "res://Scenes/NodeHeight/YZSort/YZSort.gd"
 } ]
 _global_script_class_icons={
 "Grid": "",
