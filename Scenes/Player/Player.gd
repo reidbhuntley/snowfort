@@ -4,6 +4,7 @@ const SPEED = 200
 var velocity = Vector2.ZERO
 
 var screen_size
+var snowballs = 10
 
 onready var BULLET_SCENE = preload("res://Scenes/Bullet/Bullet.tscn")
 const BULLET_HEIGHT = 50
@@ -27,8 +28,13 @@ func _physics_process(delta):
 	position.y = clamp(position.y, 0, screen_size.y)
 
 func _process(delta):
+	if Input.is_action_just_pressed("space"):
+		snowballs = snowballs + 1
+	
 	if Input.is_action_just_pressed("ui_mouse_left"):
-		fire()
+		if snowballs > 0:
+			fire()
+			snowballs = snowballs - 1
 
 func fire():
 	var bullet = BULLET_SCENE.instance()
