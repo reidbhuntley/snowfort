@@ -5,7 +5,6 @@
 [ext_resource path="res://Scenes/NodeHeight/Hitbox/Hitbox.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/NodeHeight/NodeHeight.tscn" type="PackedScene" id=4]
 
-
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 2.00246
 height = 10.7674
@@ -18,7 +17,8 @@ collision_layer = 4
 script = ExtResource( 2 )
 
 [node name="NodeHeight" parent="." instance=ExtResource( 4 )]
-thickness = 48.0
+thickness = 32.0
+shadow_width = 40.0
 
 [node name="PlaceholderSprite" type="Sprite" parent="."]
 position = Vector2( 0, -30 )
