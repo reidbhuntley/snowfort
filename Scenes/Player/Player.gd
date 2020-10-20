@@ -28,6 +28,8 @@ func _physics_process(delta):
 	position.y = clamp(position.y, 0, screen_size.y)
 
 func _process(delta):
+	get_node("Label").set_text(str(snowballs))
+	
 	if Input.is_action_just_pressed("space"):
 		snowballs = snowballs + 1
 	

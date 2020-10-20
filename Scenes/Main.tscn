@@ -16,6 +16,15 @@ grid_bounds = Vector2( 16, 8 )
 position = Vector2( 74.1202, 156.885 )
 collision_mask = 2147483649
 
+[node name="Label" type="Label" parent="Grid/Player"]
+margin_left = 30.0
+margin_top = -120.0
+margin_right = 75.0
+margin_bottom = -77.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Wall" parent="Grid" instance=ExtResource( 2 )]
 position = Vector2( 76.4171, 111.706 )
 collision_layer = 2147483649
