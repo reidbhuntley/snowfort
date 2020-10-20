@@ -1,5 +1,5 @@
 class_name Grid
-extends YSort
+extends YZSort
 
 const GRID_PATH = @"/root/Game/Grid"
 

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scenes/NodeHeight/YZSort/YZSort.gd" type="Script" id=1]
+
+
+[node name="YZSort" type="Node2D"]
+script = ExtResource( 1 )

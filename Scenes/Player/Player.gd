@@ -38,6 +38,7 @@ func _process(delta):
 
 func fire():
 	var bullet = BULLET_SCENE.instance()
-	bullet.position = get_global_position() + (Vector2.UP * BULLET_HEIGHT)
+	bullet.position = get_global_position()
 	get_parent().add_child(bullet)
+	bullet.node_height.height_coord = BULLET_HEIGHT
 	

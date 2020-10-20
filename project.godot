@@ -9,13 +9,31 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "YSort",
+"base": "YZSort",
 "class": "Grid",
 "language": "GDScript",
 "path": "res://Scenes/Grid/Grid.gd"
+}, {
+"base": "Area2D",
+"class": "Hitbox",
+"language": "GDScript",
+"path": "res://Scenes/NodeHeight/Hitbox/Hitbox.gd"
+}, {
+"base": "Node",
+"class": "NodeHeight",
+"language": "GDScript",
+"path": "res://Scenes/NodeHeight/NodeHeight.gd"
+}, {
+"base": "Node2D",
+"class": "YZSort",
+"language": "GDScript",
+"path": "res://Scenes/NodeHeight/YZSort/YZSort.gd"
 } ]
 _global_script_class_icons={
-"Grid": ""
+"Grid": "",
+"Hitbox": "",
+"NodeHeight": "",
+"YZSort": ""
 }
 
 [application]
