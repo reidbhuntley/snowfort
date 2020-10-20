@@ -1,6 +1,8 @@
 class_name YZSort
 extends Node2D
 
+export var z_index_offset = 0
+
 class ChildDepth:
 	var child: Node
 	var depth: float
@@ -25,4 +27,4 @@ func _process(delta):
 	to_sort.sort_custom(ChildDepth, "sort")
 	
 	for i in to_sort.size():
-		to_sort[i].child.z_index = i
+		to_sort[i].child.z_index = i + z_index_offset
