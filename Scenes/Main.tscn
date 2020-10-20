@@ -9,7 +9,7 @@
 [node name="Game" type="Node"]
 
 [node name="Grid" parent="." instance=ExtResource( 3 )]
-grid_bounds = Vector2( 3, 3 )
+grid_bounds = Vector2( 18, 18 )
 
 [node name="Player" parent="Grid" instance=ExtResource( 1 )]
 position = Vector2( 74.1202, 156.885 )

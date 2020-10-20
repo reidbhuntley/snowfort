@@ -37,6 +37,9 @@ func set_cell(pos: Vector2, value):
 		pass
 		#print("oof")
 
+func cell_full(pos: Vector2):
+	return grid[pos.x][pos.y] != null
+
 func world_to_grid(pos: Vector2):
 	return (global_transform.xform_inv(pos) / CELL_SIZE).floor()
 

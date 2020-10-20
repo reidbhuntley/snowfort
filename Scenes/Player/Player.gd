@@ -8,8 +8,15 @@ var screen_size
 onready var BULLET_SCENE = preload("res://Scenes/Bullet/Bullet.tscn")
 const BULLET_HEIGHT = 50
 
+onready var WALL_SCENE = preload("res://Scenes/Wall/Wall.tscn")
+const BUILD_WALL_TIME = 1
+var build_wall_progress = 0
+onready var progress_bar = $ProgressBar
+
 func _ready():
 	screen_size = get_viewport_rect().size
+	progress_bar.max_value = BUILD_WALL_TIME
+	progress_bar.hide()
 
 func _physics_process(delta):
 	var input_vector = Vector2.ZERO
@@ -30,8 +37,28 @@ func _process(delta):
 	if Input.is_action_just_pressed("ui_mouse_left"):
 		fire()
 
+	if Input.is_action_pressed("build_wall"):
+		build_wall_progress += delta
+		progress_bar.show()
+		progress_bar.value = build_wall_progress
+		if(build_wall_progress >= BUILD_WALL_TIME):
+			build_wall()
+			reset_wall_build()
+	
+	if Input.is_action_just_released("build_wall"):
+		reset_wall_build()
+
 func fire():
 	var bullet = BULLET_SCENE.instance()
 	bullet.position = get_global_position() + (Vector2.UP * BULLET_HEIGHT)
 	get_parent().add_child(bullet)
-	
+
+func build_wall():
+	var wall = WALL_SCENE.instance()
+	wall.position = get_global_position()
+	get_parent().add_child(wall)
+	wall.prep_wall()
+
+func reset_wall_build():
+	build_wall_progress = 0;
+	progress_bar.hide()
