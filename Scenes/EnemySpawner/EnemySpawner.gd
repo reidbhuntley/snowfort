@@ -9,5 +9,6 @@ func spawn_mob():
 	var mob = MOB_SCENE.instance()
 	var randomRow = rand_range(1, grid.grid_bounds.y + 1) as int
 	# print("Spawn position is grid(" + LASTCOL as String + ", " + randomRow as String + ")")
-	mob.position = grid.grid_to_world(Vector2(LASTCOL, randomRow))
+	mob.position = grid.grid_to_world_centered(Vector2(LASTCOL, randomRow))
+
 	grid.add_child(mob)
