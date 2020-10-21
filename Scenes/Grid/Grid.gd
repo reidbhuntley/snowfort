@@ -49,6 +49,9 @@ func grid_to_world(pos: Vector2):
 func grid_to_world_centered(pos: Vector2):
 	return grid_to_world(pos + Vector2.ONE*0.5)
 
+func grid_to_world_bottom(pos: Vector2):
+	return grid_to_world(pos + Vector2(0.5, 1.0))
+
 func _process(delta):
 	#print(grid)
 	pass

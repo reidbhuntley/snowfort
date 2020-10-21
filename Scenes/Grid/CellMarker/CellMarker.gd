@@ -16,5 +16,5 @@ func position_wall():
 		return
 	
 	grid.set_cell(grid_pos, get_node(cell_node))
-	get_parent().set_position(grid.grid_to_world_centered(grid_pos))
+	get_parent().set_position(grid.grid_to_world_bottom(grid_pos))
 	queue_free()
