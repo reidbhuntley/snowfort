@@ -37,7 +37,7 @@ func _physics_process(delta):
 func _process(delta):
 	get_node("Label").set_text(str(snowballs))
 
-	if Input.is_action_just_pressed("space"):
+	if Input.is_action_just_pressed("ui_select"):
 		snowballs = snowballs + 1
 
 	if Input.is_action_just_pressed("ui_mouse_left"):
