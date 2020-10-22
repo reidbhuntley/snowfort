@@ -1,5 +1,5 @@
 class_name Grid
-extends YSort
+extends YZSort
 
 const GRID_PATH = @"/root/Game/Grid"
 
@@ -21,11 +21,24 @@ func _ready():
 			col.append(null)
 		grid.append(col)
 
+func cell_in_bounds(pos: Vector2):
+	return pos.x < grid_bounds.x and pos.y < grid_bounds.y
+
 func get_cell(pos: Vector2):
-	return grid[pos.x][pos.y]
+	if cell_in_bounds(pos):
+		return grid[pos.x][pos.y]
+	else:
+		return null
 
 func set_cell(pos: Vector2, value):
-	grid[pos.x][pos.y] = value
+	if cell_in_bounds(pos):
+		grid[pos.x][pos.y] = value
+	else:
+		pass
+		#print("oof")
+
+func cell_full(pos: Vector2):
+	return grid[pos.x][pos.y] != null
 
 func world_to_grid(pos: Vector2):
 	return (global_transform.xform_inv(pos) / CELL_SIZE).floor()
@@ -35,6 +48,9 @@ func grid_to_world(pos: Vector2):
 
 func grid_to_world_centered(pos: Vector2):
 	return grid_to_world(pos + Vector2.ONE*0.5)
+
+func grid_to_world_bottom(pos: Vector2):
+	return grid_to_world(pos + Vector2(0.5, 1.0))
 
 func _process(delta):
 	#print(grid)
