@@ -43,7 +43,7 @@ func _process(delta):
 	if Input.is_action_just_pressed("ui_mouse_left"):
 		if snowballs > 0:
 			fire()
-			snowballs = snowballs - 1
+			#snowballs = snowballs - 1
 
 	if Input.is_action_pressed("build_wall"):
 		build_wall_progress += delta

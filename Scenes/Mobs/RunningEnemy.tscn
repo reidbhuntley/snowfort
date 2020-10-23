@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Scenes/Mobs/image0.jpg" type="Texture" id=1]
+[ext_resource path="res://Scenes/Mobs/image0.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/Mobs/RunningEnemy.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/NodeHeight/Hitbox/Hitbox.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/NodeHeight/NodeHeight.tscn" type="PackedScene" id=4]
