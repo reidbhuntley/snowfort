@@ -38,5 +38,6 @@ collision_layer = 2147483649
 position = Vector2( 868.776, 86.2499 )
 
 [node name="ThrowingEnemy" parent="Grid" instance=ExtResource( 6 )]
+position = Vector2( 984.292, 199.404 )
 
 [node name="EnemySpawner" parent="." instance=ExtResource( 4 )]
