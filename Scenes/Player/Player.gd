@@ -8,6 +8,8 @@ var snowballs = 10
 
 onready var BULLET_SCENE = preload("res://Scenes/Bullet/Bullet.tscn")
 const BULLET_HEIGHT = 50
+const BUILD_SNOWBALL_TIME = .75
+var build_snowball_progress = 0
 
 onready var WALL_SCENE = preload("res://Scenes/Wall/Wall.tscn")
 const BUILD_WALL_TIME = 1
@@ -37,8 +39,16 @@ func _physics_process(delta):
 func _process(delta):
 	get_node("Label").set_text(str(snowballs))
 
-	if Input.is_action_just_pressed("ui_select"):
-		snowballs = snowballs + 1
+	if Input.is_action_pressed("ui_select"):
+		build_snowball_progress += delta
+		progress_bar.show()
+		progress_bar.value = build_snowball_progress
+		if(build_snowball_progress >= BUILD_SNOWBALL_TIME):
+			snowballs = snowballs + 1
+			reset_snowball_build()
+		
+	if Input.is_action_just_released("ui_select"):
+		reset_snowball_build()
 
 	if Input.is_action_just_pressed("ui_mouse_left"):
 		if snowballs > 0:
@@ -70,4 +80,8 @@ func build_wall():
 
 func reset_wall_build():
 	build_wall_progress = 0;
+	progress_bar.hide()
+	
+func reset_snowball_build():
+	build_snowball_progress = 0;
 	progress_bar.hide()
