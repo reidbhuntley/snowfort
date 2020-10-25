@@ -36,6 +36,6 @@ collision_mask = 8
 node_height_path = NodePath("../NodeHeight")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2( 0, -30 )
+position = Vector2( -0.333712, -30.6674 )
 shape = SubResource( 2 )
 [connection signal="hitbox_entered" from="Hitbox" to="." method="_on_Hitbox_hitbox_entered"]
