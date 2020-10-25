@@ -29,6 +29,8 @@ func _physics_process(delta):
 
 	if input_vector != Vector2.ZERO:
 		velocity = SPEED * input_vector
+		reset_snowball_build()
+		reset_wall_build()
 	else:
 		velocity = Vector2.ZERO
 
@@ -39,9 +41,11 @@ func _physics_process(delta):
 func _process(delta):
 	get_node("Label").set_text(str(snowballs))
 
+	if Input.is_action_just_pressed("ui_select"):
+		progress_bar.show()
+
 	if Input.is_action_pressed("ui_select"):
 		build_snowball_progress += delta
-		progress_bar.show()
 		progress_bar.value = build_snowball_progress
 		if(build_snowball_progress >= BUILD_SNOWBALL_TIME):
 			snowballs = snowballs + 1
@@ -55,9 +59,11 @@ func _process(delta):
 			fire()
 			snowballs = snowballs - 1
 
+	if Input.is_action_just_pressed("build_wall"):
+		progress_bar.show()
+
 	if Input.is_action_pressed("build_wall"):
 		build_wall_progress += delta
-		progress_bar.show()
 		progress_bar.value = build_wall_progress
 		if(build_wall_progress >= BUILD_WALL_TIME):
 			build_wall()
