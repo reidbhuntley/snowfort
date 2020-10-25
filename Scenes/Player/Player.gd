@@ -41,24 +41,28 @@ func _physics_process(delta):
 func _process(delta):
 	get_node("Label").set_text(str(snowballs))
 
-	if Input.is_action_just_pressed("ui_select"):
+	# Reloading
+	if Input.is_action_just_pressed("reload"):
 		progress_bar.show()
 
-	if Input.is_action_pressed("ui_select"):
+	if Input.is_action_pressed("reload"):
 		build_snowball_progress += delta
 		progress_bar.value = build_snowball_progress
 		if(build_snowball_progress >= BUILD_SNOWBALL_TIME):
 			snowballs = snowballs + 1
 			reset_snowball_build()
 		
-	if Input.is_action_just_released("ui_select"):
+	if Input.is_action_just_released("reload"):
 		reset_snowball_build()
+		progress_bar.hide()
 
+	# Firing
 	if Input.is_action_just_pressed("ui_mouse_left"):
 		if snowballs > 0:
 			fire()
 			snowballs = snowballs - 1
 
+	# Wall building
 	if Input.is_action_just_pressed("build_wall"):
 		progress_bar.show()
 
@@ -71,6 +75,8 @@ func _process(delta):
 
 	if Input.is_action_just_released("build_wall"):
 		reset_wall_build()
+		progress_bar.hide()
+
 
 func fire():
 	var bullet = BULLET_SCENE.instance()
@@ -78,16 +84,17 @@ func fire():
 	get_parent().add_child(bullet)
 	bullet.node_height.height_coord = BULLET_HEIGHT
 
+
 func build_wall():
 	var wall = WALL_SCENE.instance()
 	wall.position = get_global_position()
 	get_parent().add_child(wall)
 	wall.prep_wall()
 
+
 func reset_wall_build():
 	build_wall_progress = 0;
-	progress_bar.hide()
-	
+
+
 func reset_snowball_build():
 	build_snowball_progress = 0;
-	progress_bar.hide()
