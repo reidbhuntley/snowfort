@@ -5,6 +5,7 @@ var velocity = Vector2.ZERO
 
 var screen_size
 export var snowballs = 10
+export var health = 100.0
 
 onready var BULLET_SCENE = preload("res://Scenes/Bullet/Bullet.tscn")
 const BULLET_HEIGHT = 32
@@ -98,3 +99,11 @@ func reset_wall_build():
 
 func reset_snowball_build():
 	build_snowball_progress = 0;
+
+
+func _on_Hitbox_hitbox_entered(projectile):
+	var damage = projectile.get("damage")
+	if damage is float:
+		health -= damage
+	
+	projectile.queue_free()

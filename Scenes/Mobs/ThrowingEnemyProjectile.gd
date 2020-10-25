@@ -1,7 +1,7 @@
 extends Hitbox
 
-var speed := 400.0
-
+export var speed := 400.0
+export var damage := 10.0
 
 func _process(delta):
 	var velocity = Vector2(-1,0)
