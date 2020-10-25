@@ -1,23 +1,28 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Scenes/ThrowingEnemy.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Mobs/ThrowingEnemy.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Mobs/BaseballMan.jpg" type="Texture" id=2]
+[ext_resource path="res://Scenes/NodeHeight/Hitbox/Hitbox.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/NodeHeight/NodeHeight.tscn" type="PackedScene" id=4]
 
 [sub_resource type="CapsuleShape2D" id=1]
+radius = 3.8358
+height = 10.1832
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 16.7863, 27.6398 )
 
 [node name="ThrowingEnemy" type="KinematicBody2D"]
+collision_layer = 4
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 0.25, 0.25 )
-texture = ExtResource( 2 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2( 1.8, 1.8 )
-shape = SubResource( 1 )
+[node name="NodeHeight" parent="." instance=ExtResource( 4 )]
+height = 58.0
+thickness = 32.0
+shadow_width = 40.0
 
 [node name="TimeBetweenThrows" type="Timer" parent="."]
 wait_time = 2.0
@@ -25,5 +30,24 @@ one_shot = true
 
 [node name="TimerForThrows" type="Timer" parent="."]
 one_shot = true
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, -28.8484 )
+scale = Vector2( 0.15, 0.25 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -7.22064 )
+rotation = 1.5708
+scale = Vector2( 1.8, 1.8 )
+shape = SubResource( 1 )
+
+[node name="Hitbox" parent="." instance=ExtResource( 3 )]
+node_height_path = NodePath("../NodeHeight")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2( 0.184021, -28.5239 )
+shape = SubResource( 2 )
 [connection signal="timeout" from="TimeBetweenThrows" to="." method="_on_TimeBetweenThrows_timeout"]
 [connection signal="timeout" from="TimerForThrows" to="." method="_on_TimerForThrows_timeout"]
+[connection signal="hitbox_entered" from="Hitbox" to="." method="_on_Hitbox_hitbox_entered"]

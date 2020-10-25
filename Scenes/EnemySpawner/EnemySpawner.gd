@@ -3,7 +3,7 @@ extends Node
 onready var grid = get_parent().get_node("Grid")
 onready var LASTCOL = grid.grid_bounds.x - 1
 
-onready var MOB_SCENE = preload("res://Scenes/Mobs/RunningEnemy.tscn")
+onready var MOB_SCENE = preload("res://Scenes/Mobs/ThrowingEnemy.tscn")
 
 func spawn_mob():
 	var mob = MOB_SCENE.instance()

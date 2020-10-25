@@ -1,4 +1,4 @@
-extends Area2D
+extends Hitbox
 
 var speed := 400.0
 

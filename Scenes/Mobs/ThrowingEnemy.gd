@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+const BULLET_HEIGHT = 32
+
 var defaultSpeed = 60
 var speed  = defaultSpeed
 var direction = Vector2(-1,0)
@@ -31,3 +33,4 @@ func fire():
 	var bullet = PROJECTILE_SCENE.instance()
 	bullet.position = get_global_position()
 	get_parent().add_child(bullet)
+	bullet.node_height.height_coord = BULLET_HEIGHT
