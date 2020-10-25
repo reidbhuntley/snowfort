@@ -4,7 +4,7 @@ const SPEED = 200
 var velocity = Vector2.ZERO
 
 var screen_size
-var snowballs = 10
+export var snowballs = 10
 
 onready var BULLET_SCENE = preload("res://Scenes/Bullet/Bullet.tscn")
 const BULLET_HEIGHT = 32
