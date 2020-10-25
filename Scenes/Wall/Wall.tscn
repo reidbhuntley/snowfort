@@ -1,14 +1,23 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/Grid/CellMarker/CellMarker.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Wall/Wall.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/NodeHeight/Hitbox/Hitbox.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/NodeHeight/NodeHeight.tscn" type="PackedScene" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 32 )
 
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 32, 16 )
+
 [node name="Wall" type="StaticBody2D"]
 script = ExtResource( 3 )
+
+[node name="NodeHeight" parent="." instance=ExtResource( 5 )]
+thickness = 64.0
+show_shadow = false
 
 [node name="CellMarker" parent="." instance=ExtResource( 2 )]
 position = Vector2( 0, -32 )
@@ -29,3 +38,11 @@ texture = ExtResource( 1 )
 visible = false
 position = Vector2( 0, -32.0135 )
 shape = SubResource( 1 )
+
+[node name="Hitbox" parent="." instance=ExtResource( 4 )]
+node_height_path = NodePath("../NodeHeight")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2( 0, -48 )
+shape = SubResource( 2 )
+[connection signal="hitbox_entered" from="Hitbox" to="." method="_on_Hitbox_hitbox_entered"]
