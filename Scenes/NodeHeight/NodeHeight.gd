@@ -7,6 +7,7 @@ extends Node
 const SHADOW_BASE_SIZE = Vector2(64.0, 64.0)
 
 export var height_coord = 0.0 setget set_height_coord
+export var height = 16.0
 export var thickness = 16.0 setget set_thickness
 export var show_shadow = true setget set_show_shadow
 export var shadow_width = 32.0 setget set_shadow_width
@@ -54,15 +55,25 @@ func get_depth_coord() -> float:
 	return parent.global_position.y + height_coord
 
 func depth_overlaps(other) -> bool:
-	var depth = get_depth_coord()
-	var depth_other = other.get_depth_coord()
+	var depth_coord = get_depth_coord()
+	var depth_coord_other = other.get_depth_coord()
 	var half_thick = 0.5*thickness
 	var half_thick_other = 0.5*other.thickness
-	return (
-		depth - half_thick <= depth_other + half_thick_other
+	if (
+		depth_coord - half_thick <= depth_coord_other + half_thick_other
 	) and (
-		depth + half_thick >= depth_other - half_thick_other
-	)
+		depth_coord + half_thick >= depth_coord_other - half_thick_other
+	):
+		var height_coord_other = other.height_coord
+		var height_other = other.height
+		if (
+			height_coord <= height_coord_other + height_other
+		) and (
+			height_coord + height >= height_coord_other
+		):
+			return true
+	
+	return false
 
 func set_thickness(new_thickness):
 	thickness = new_thickness

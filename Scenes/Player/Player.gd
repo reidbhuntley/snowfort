@@ -7,7 +7,7 @@ var screen_size
 var snowballs = 10
 
 onready var BULLET_SCENE = preload("res://Scenes/Bullet/Bullet.tscn")
-const BULLET_HEIGHT = 50
+const BULLET_HEIGHT = 32
 const BUILD_SNOWBALL_TIME = .75
 var build_snowball_progress = 0
 
