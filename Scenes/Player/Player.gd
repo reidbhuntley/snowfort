@@ -8,7 +8,7 @@ export var snowballs = 10
 export var max_health = 100.0
 var current_health : float
 var frozen = false
-const UNFROZEN_STEP = 7
+const UNFROZEN_STEP = 20
 onready var hp_bar = $HPBar
 
 onready var BULLET_SCENE = preload("res://Scenes/Bullet/Bullet.tscn")
@@ -79,10 +79,10 @@ func _process(delta):
 			progress_bar.hide()
 
 		# Firing
-			if Input.is_action_just_pressed("ui_mouse_left"):
-				if snowballs > 0:
-					fire()
-					snowballs = snowballs - 1
+		if Input.is_action_just_pressed("ui_mouse_left"):
+			if snowballs > 0:
+				fire()
+				snowballs = snowballs - 1
 
 		# Wall building
 		if Input.is_action_just_pressed("build_wall"):
@@ -124,7 +124,7 @@ func reset_snowball_build():
 
 func _on_Hitbox_hitbox_entered(projectile):
 	var damage = projectile.get("damage")
-	if damage is float && !frozen:
+	if (damage is float) and (not frozen):
 		current_health -= damage
 		hp_bar.value = current_health
 		if current_health <= 0.0:
