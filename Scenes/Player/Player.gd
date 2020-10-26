@@ -5,7 +5,8 @@ var velocity = Vector2.ZERO
 
 var screen_size
 export var snowballs = 10
-export var health = 100.0
+export var max_health = 100.0
+var current_health : int
 
 onready var BULLET_SCENE = preload("res://Scenes/Bullet/Bullet.tscn")
 const BULLET_HEIGHT = 32
@@ -16,11 +17,19 @@ onready var WALL_SCENE = preload("res://Scenes/Wall/Wall.tscn")
 const BUILD_WALL_TIME = 1
 var build_wall_progress = 0
 onready var progress_bar = $ProgressBar
+onready var hp_bar = $HPBar
+
 
 func _ready():
 	screen_size = get_viewport_rect().size
+	
 	progress_bar.max_value = BUILD_WALL_TIME
 	progress_bar.hide()
+	
+	hp_bar.max_value = max_health
+	current_health = max_health
+	hp_bar.value = current_health
+
 
 func _physics_process(delta):
 	var input_vector = Vector2.ZERO
@@ -38,6 +47,7 @@ func _physics_process(delta):
 	move_and_slide(velocity) # Moves body along input vector. Slides against other objects instead of stopping dead. Accounts for delta automatically.
 	position.x = clamp(position.x, 0, screen_size.x)
 	position.y = clamp(position.y, 0, screen_size.y)
+
 
 func _process(delta):
 	get_node("Label").set_text(str(snowballs))
@@ -104,6 +114,7 @@ func reset_snowball_build():
 func _on_Hitbox_hitbox_entered(projectile):
 	var damage = projectile.get("damage")
 	if damage is float:
-		health -= damage
+		current_health -= damage
+		hp_bar.value = current_health
 	
 	projectile.queue_free()
